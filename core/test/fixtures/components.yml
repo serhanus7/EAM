@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  version: MyString
+  editor: one
+  support_type: MyString
+  release_date: 2022-09-11
+  support_end_date: 2022-09-11
+  support_end_date_ex: 2022-09-11
+  note: MyText
+  lts: false
+  manager: one
+
+two:
+  name: MyString
+  version: MyString
+  editor: two
+  support_type: MyString
+  release_date: 2022-09-11
+  support_end_date: 2022-09-11
+  support_end_date_ex: 2022-09-11
+  note: MyText
+  lts: false
+  manager: two

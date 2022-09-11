@@ -22,3 +22,180 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 3750)
 
 
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7418780713304027445)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEditors (20220910234401)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "editors" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220910234401"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-10 23:59:33.670594"], ["updated_at", "2022-09-10 23:59:33.670594"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7418780713304027445)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.19.0.1 at 2022-09-10 23:59:54 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 526)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 3762)
+
+
+Started GET "/editors" for 172.19.0.1 at 2022-09-10 23:59:59 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering editors/index.html.erb within layouts/application
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors"[0m
+  ↳ app/views/editors/index.html.erb:6
+  Rendered editors/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1426)
+  Rendered layout layouts/application.html.erb (Duration: 371.8ms | Allocations: 91054)
+Completed 200 OK in 376ms (Views: 372.7ms | ActiveRecord: 0.4ms | Allocations: 92897)
+
+
+Started GET "/editors/new" for 172.19.0.1 at 2022-09-11 00:00:03 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering editors/new.html.erb within layouts/application
+  Rendered editors/_form.html.erb (Duration: 8.0ms | Allocations: 4418)
+  Rendered editors/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 4774)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 7089)
+Completed 200 OK in 48ms (Views: 11.4ms | ActiveRecord: 2.2ms | Allocations: 11300)
+
+
+Started POST "/editors" for 172.19.0.1 at 2022-09-11 00:00:11 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "editor"=>{"name"=>"IBM"}, "commit"=>"Create Editor"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/editors_controller.rb:27:in `block in create'
+  [1m[36mEditor Create (0.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "IBM"], ["created_at", "2022-09-11 00:00:11.523326"], ["updated_at", "2022-09-11 00:00:11.523326"]]
+  ↳ app/controllers/editors_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (1835.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/editors_controller.rb:27:in `block in create'
+Redirected to http://0.0.0.0:3000/editors/1
+Completed 302 Found in 1842ms (ActiveRecord: 1835.7ms | Allocations: 3859)
+
+
+Started GET "/editors/1" for 172.19.0.1 at 2022-09-11 00:00:13 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mEditor Load (0.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/editors_controller.rb:63:in `set_editor'
+  Rendering layout layouts/application.html.erb
+  Rendering editors/show.html.erb within layouts/application
+  Rendered editors/_editor.html.erb (Duration: 0.4ms | Allocations: 202)
+  Rendered editors/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1563)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3855)
+Completed 200 OK in 11ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 6709)
+
+
+Started GET "/editors" for 172.19.0.1 at 2022-09-11 00:00:20 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering editors/index.html.erb within layouts/application
+  [1m[36mEditor Load (0.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors"[0m
+  ↳ app/views/editors/index.html.erb:6
+  Rendered editors/_editor.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered editors/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1015)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3201)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 3516)
+
+
+Started GET "/editors/new" for 172.19.0.1 at 2022-09-11 00:00:24 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering editors/new.html.erb within layouts/application
+  Rendered editors/_form.html.erb (Duration: 1.3ms | Allocations: 814)
+  Rendered editors/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 902)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3084)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 3361)
+
+
+Started POST "/editors" for 172.19.0.1 at 2022-09-11 00:00:30 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "editor"=>{"name"=>"Redhat"}, "commit"=>"Create Editor"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/editors_controller.rb:27:in `block in create'
+  [1m[36mEditor Create (0.3ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Redhat"], ["created_at", "2022-09-11 00:00:30.157982"], ["updated_at", "2022-09-11 00:00:30.157982"]]
+  ↳ app/controllers/editors_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (49.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/editors_controller.rb:27:in `block in create'
+Redirected to http://0.0.0.0:3000/editors/2
+Completed 302 Found in 53ms (ActiveRecord: 50.0ms | Allocations: 2378)
+
+
+Started GET "/editors/2" for 172.19.0.1 at 2022-09-11 00:00:30 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/editors_controller.rb:63:in `set_editor'
+  Rendering layout layouts/application.html.erb
+  Rendering editors/show.html.erb within layouts/application
+  Rendered editors/_editor.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered editors/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 586)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2760)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 3529)
+
+
+Started GET "/editors" for 172.19.0.1 at 2022-09-11 00:00:34 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EditorsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering editors/index.html.erb within layouts/application
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors"[0m
+  ↳ app/views/editors/index.html.erb:6
+  Rendered editors/_editor.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered editors/_editor.html.erb (Duration: 0.0ms | Allocations: 16)
+  Rendered editors/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1018)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3200)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 3470)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7418780713304027445)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateManagers (20220911000955)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "managers" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220911000955"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComponents (20220911001023)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "components" ("id" bigserial primary key, "name" character varying, "version" character varying, "editor_id" bigint NOT NULL, "support_type" character varying, "release_date" date, "support_end_date" date, "support_end_date_ex" date, "note" text, "lts" boolean, "manager_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_264caa0b85"
+FOREIGN KEY ("editor_id")
+  REFERENCES "editors" ("id")
+, CONSTRAINT "fk_rails_39b4a1f828"
+FOREIGN KEY ("manager_id")
+  REFERENCES "managers" ("id")
+)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_components_on_editor_id" ON "components" ("editor_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE INDEX "index_components_on_manager_id" ON "components" ("manager_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220911001023"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7418780713304027445)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/components" for 172.19.0.1 at 2022-09-11 00:13:37 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ComponentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering components/index.html.erb within layouts/application
+  [1m[36mComponent Load (0.5ms)[0m  [1m[34mSELECT "components".* FROM "components"[0m
+  ↳ app/views/components/index.html.erb:6
+  Rendered components/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1411)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 15141)
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 0.5ms | Allocations: 18161)
+
+
